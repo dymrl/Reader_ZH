@@ -1,10 +1,13 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, request
 from parser import parseAnswer, getAnswers
 app = Flask(__name__)
 
-@app.route("/")
+@app.route("/", methods=['GET', 'POST'])
 def hello():
-    return "Hello World!"
+	if request.method == 'GET':
+		return render_template('index.html')
+	else:
+		return  redirect("/q/" + request.form['qid'] + '/p/1')
 
 @app.route("/q/<questionid>/p/<int:page>")
 def question(questionid, page):
