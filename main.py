@@ -6,12 +6,12 @@ app = Flask(__name__)
 def hello():
     return "Hello World!"
 
-@app.route("/question/<questionid>/page/<page>")
+@app.route("/q/<questionid>/p/<page>")
 def question(questionid, page):
 	answerList = getAnswers(questionid, page)
 	return render_template('question.html', questionid = questionid, answers = answerList)
 	
-@app.route("/question/<questionid>/answer/<answerid>")
+@app.route("/q/<questionid>/a/<answerid>")
 def answer(questionid, answerid):
 	answer = parseAnswer(questionid, answerid)
 	return render_template('answer.html', answer = answer)
