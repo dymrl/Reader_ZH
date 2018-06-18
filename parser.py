@@ -10,7 +10,7 @@ def parseAnswer(questionid, answerid):
 
 def getAnswers(questionid, page):
 	answerlist = []
-	answersjson = str(urllib.request.urlopen("https://www.zhihu.com/api/v4/questions/" + questionid + "/answers?sort_by=default&limit=20&offset=" + (page + 1) * 20).read())
+	answersjson = str(urllib.request.urlopen("https://www.zhihu.com/api/v4/questions/" + questionid + "/answers?sort_by=default&limit=20&offset=" + str((page + 1) * 20)).read())
 	for i in re.findall("http://www.zhihu.com/api/v4/answers/\d+\"", answersjson):
 		answerlist.append(i[36:-1])
 	return(answerlist)
