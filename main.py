@@ -6,9 +6,9 @@ app = Flask(__name__)
 def hello():
     return "Hello World!"
 
-@app.route("/q/<questionid>/p/<page>")
+@app.route("/q/<questionid>/p/<int:page>")
 def question(questionid, page):
-	answerList = getAnswers(questionid, page)
+	answerList = getAnswers(questionid, str(page*20))
 	return render_template('question.html', questionid = questionid, answers = answerList)
 	
 @app.route("/q/<questionid>/a/<answerid>")

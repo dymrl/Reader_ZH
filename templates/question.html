@@ -2,7 +2,7 @@
 <title>Question AnList</title>
 <body>
   {% for answer in answers %}
-    <p><a href="/question/{{ questionid  }}/answer/{{ answer }}">{{ answer }}</a></p>
+    <p><a href="/q/{{ questionid  }}/a/{{ answer }}">{{ answer }}</a></p>
   {% endfor %}
   {% block content %}{% endblock %}
 </body>
